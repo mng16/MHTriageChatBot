@@ -1,7 +1,7 @@
 <?php
 // Includes
-include '../includes/connect.php';
-include '../includes/functions.php';
+/*include '../includes/connect.php';
+include '../includes/functions.php';*/
 ?>
 
 <!DOCTYPE html>
@@ -15,6 +15,7 @@ include '../includes/functions.php';
 <body>
 
 <?php include '../includes/nav.php'; ?>
+<?php include '../includes/scripts.php'; ?>
 
 <header>
 <h1>High Scoring Users</h1>
@@ -24,11 +25,14 @@ include '../includes/functions.php';
 
 <section>
 
-<p>The severity of depression and anxiety corresponding to PHQ-9 and GAD-7 user scores is shown in the tables below.</p>
+<h2>Scoring System</h2>
 
-<h2>Depression Severity Associated with PHQ-9 Scores</h2>
-<div class="table-responsive">
-<table class="table table-bordered" id="depressionSeverity">
+<div class="container">
+<div class="row">
+
+<div class="col-md-6">
+<table class="table-bordered table-condensed" id="depressionSeverity">
+	<caption>Depression Severity Associated with PHQ-9 Scores</caption>
 	<tr>
 		<th>Score Range</th>
 		<th>Depression Severity</th>
@@ -52,9 +56,9 @@ include '../includes/functions.php';
 </table>
 </div>
 
-<h2>Anxiety Severity Associated with GAD-7 Scores</h2>
-<div class="table-responsive">
-<table class="table table-bordered" id="anxietySeverity">
+<div class="col-md-6">
+<table class="table-bordered table-condensed" id="anxietySeverity">
+	<caption>Anxiety Severity Associated with GAD-7 Scores</caption>
 	<tr>
 		<th>Score Range</th>
 		<th>Anxiety Severity</th>
@@ -77,6 +81,8 @@ include '../includes/functions.php';
 	</tr>
 </table>
 </div>
+</div>
+</div>
 
 </section>
 
@@ -84,7 +90,7 @@ include '../includes/functions.php';
 
 <h2>List of High Scoring Users</h2>
 
-<?php
+<?php 
 $highTotalScore = 15; // scores of 16-20 indicate severe anxiety/depression
 $dateFrom = '2017-08-20 00:00:00';
 //$dateTo = '2017-08-28 00:00:00';
@@ -107,7 +113,8 @@ $threshold = 1;
 <p>Users who have score that is in the PHQ-9/GAD-7 severe range <?php echo $threshold; ?> or more times over a period of two weeks from today (<?php echo $dateTo; ?>) are listed below:</p>
 
 
-<?php
+<div class="btn-group">
+<?php /*
 $userIDs = getAllUserIDs($conn);
 foreach($userIDs as $userID){
 	$username = getUsernameFromID($conn, $userID);
@@ -132,14 +139,18 @@ foreach($userIDs as $userID){
 	?>
 		<form action = "singleUserDetails.php" method="post">
 		<input type="hidden" name="userID" value="<?php echo $userID;?>">
-		<button type="submit"><?php echo $username?></button>
+		<button class="btn-block" type="submit"><?php echo $username?></button>
 		</form>
 	<?php
 	}
-}
+} */
 ?>
+</div>
 
 </section>
+
+
+
 
 </main>
 </body>

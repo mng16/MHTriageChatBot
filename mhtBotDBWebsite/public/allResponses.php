@@ -2,7 +2,6 @@
 // Includes
 include '../includes/connect.php';
 include '../includes/functions.php';
-
 ?>
 
 <!DOCTYPE html>
@@ -16,18 +15,21 @@ include '../includes/functions.php';
 
 <?php include '../includes/nav.php'; ?>
 
+<header>
 <h1>All Responses</h1>
+</header>
 
 <div class="table-responsive">
-<table class="table" id="allResponses_<?php echo $username;?>">
+<table class="table downloadTable" id="allResponses_<?php echo $username;?>">
 	<tr>
-		<th>Interaction ID</th>
 		<th>Question Number</th>
 		<th>Question Text</th>
 		<th>User Response</th>
 	</tr>
 
+
 <?php
+
 	$tsql = "SELECT iq.InteractionID, iq.QuestionID, ur.UserResponse 
 				FROM UserResponses ur
 				JOIN InteractionQuestionIDs iq
@@ -45,10 +47,9 @@ include '../includes/functions.php';
 		$interactionID = $row['InteractionID'];
 		$questionID = $row['QuestionID'];
 		$question = getQuestionTextFromQuestionID($conn, $questionID);
-		$userResponse = $row['UserResponse'];
+		$userResponse = $row['UserResponse']; 
 ?>
 	<tr>
-		<td><?php echo $interactionID; ?></td>
 		<td><?php echo $questionID; ?></td>
 		<td><?php echo $question; ?></td>
 		<td><?php echo $userResponse; ?></td>

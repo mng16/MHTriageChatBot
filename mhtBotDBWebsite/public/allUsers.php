@@ -24,6 +24,7 @@ include '../includes/functions.php';
 
 <p>This is a list of all users on the system. More details about each individual user are accessible by clicking on their name.</p>
 
+<div class="btn-group">
 <?php 
 $userID = getAllUserIDs($conn);
 $username = null;
@@ -33,11 +34,12 @@ foreach($userID as $userID){
 
 	<form action = "singleUserDetails.php" method="post">
 	<input type="hidden" name="userID" value="<?php echo $userID;?>">
-	<button type="submit"><?php echo $username?></button>
+	<button class="btn-block" type="submit"><?php echo $username?></button>
 	</form>
 <?php
-}
+} 
 ?>
+</div>
 
 </main>
 </body>
@@ -45,4 +47,5 @@ foreach($userID as $userID){
 <?php include '../includes/scripts.php'; ?>
 
 </html>
+
 

@@ -1,2 +1,2 @@
 
-$("table").tableExport();
+$(".downloadTable").tableExport();
